@@ -40,7 +40,8 @@ div#driver-popover-item {
       border-left-color: transparent;
 
       &.position-center {
-        left: 49%;
+        left: 50%;
+        transform: translateX(-50%);
       }
 
       &.position-right {
@@ -92,7 +93,8 @@ div#driver-popover-item {
       border-left-color: transparent;
 
       &.position-center {
-        left: 49%;
+        left: 50%;
+        transform: translateX(-50%);
       }
 
       &.position-right {

@@ -373,12 +373,10 @@ export default class Popover extends Element {
     const dimensions = this.getSize();
     const popoverHeight = dimensions.height;
     const popoverWidth = dimensions.width / 2;
-
-    const popoverMargin = this.options.padding + 10;  // adding 10 to give it a little distance from the element
+    const popoverMargin = this.options.padding + this.options.margin;  // adding margin to give it a little distance from the element
     const nodeCenter = this.options.offset + elementPosition.left + ((elementPosition.right - elementPosition.left) / 2);
-
     this.node.style.top = `${elementPosition.top - popoverHeight - popoverMargin}px`;
-    this.node.style.left = `${nodeCenter - popoverWidth - this.options.padding}px`;
+    this.node.style.left = `${nodeCenter - popoverWidth}px`;
     this.node.style.right = '';
     this.node.style.bottom = '';
 
@@ -428,11 +426,11 @@ export default class Popover extends Element {
    */
   positionOnBottomCenter(elementPosition) {
     const popoverWidth = this.getSize().width / 2;
-    const popoverMargin = this.options.padding + 10;  // adding 10 to give it a little distance from the element
+    const popoverMargin = this.options.padding + this.options.margin;  // adding 10 to give it a little distance from the element
     const nodeCenter = this.options.offset + elementPosition.left + ((elementPosition.right - elementPosition.left) / 2);
 
     this.node.style.top = `${elementPosition.bottom + popoverMargin}px`;
-    this.node.style.left = `${nodeCenter - popoverWidth - this.options.padding}px`;
+    this.node.style.left = `${nodeCenter - popoverWidth}px`;
     this.node.style.right = '';
     this.node.style.bottom = '';
 

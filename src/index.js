@@ -47,6 +47,7 @@ export default class Driver {
 
     this.document = document;
     this.window = window;
+    console.log('constructor isActivated');
     this.isActivated = false;
     this.steps = [];                    // steps to be presented if any
     this.currentStep = 0;               // index for the currently highlighted step
@@ -109,7 +110,11 @@ export default class Driver {
    * @private
    */
   onClick(e) {
+    console.log('onClick');
+    console.log(this.hasHighlightedElement());
+    console.log(this.isActivated);
     if (!this.isActivated || !this.hasHighlightedElement()) {
+      console.log('进了这里');
       return;
     }
 
@@ -132,6 +137,7 @@ export default class Driver {
 
     // Remove the overlay If clicked outside the highlighted element
     if (!clickedHighlightedElement && !clickedPopover && this.options.allowClose) {
+      console.log('140');
       this.reset();
       return;
     }
@@ -141,6 +147,7 @@ export default class Driver {
     const closeClicked = e.target.classList.contains(CLASS_CLOSE_BTN);
 
     if (closeClicked) {
+      console.log('150');
       this.reset();
       return;
     }
@@ -276,6 +283,7 @@ export default class Driver {
   moveNext() {
     const nextStep = this.steps[this.currentStep + 1];
     if (!nextStep) {
+      console.log('286');
       this.reset();
       return;
     }
@@ -307,6 +315,7 @@ export default class Driver {
    */
   reset(immediate = false) {
     this.currentStep = 0;
+    console.log('reset isActivated');
     this.isActivated = false;
     this.overlay.clear(immediate);
   }
@@ -434,7 +443,7 @@ export default class Driver {
     if (!this.steps || this.steps.length === 0) {
       throw new Error('There are no steps defined to iterate');
     }
-
+    console.log('start isActivated');
     this.isActivated = true;
     this.currentStep = index;
     this.overlay.highlight(this.steps[index]);
@@ -446,6 +455,7 @@ export default class Driver {
    * @public
    */
   highlight(selector) {
+    console.log('highlight isActivated');
     this.isActivated = true;
 
     const element = this.prepareElementFromStep(selector);

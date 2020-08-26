@@ -99,6 +99,9 @@ export default class Overlay {
    * @public
    */
   show() {
+    console.log('show');
+    console.log(this.node);
+    console.log(this.node && this.node.parentElement);
     if (this.node && this.node.parentElement) {
       return;
     }
@@ -106,6 +109,7 @@ export default class Overlay {
     this.attachNode();
 
     window.setTimeout(() => {
+      console.log('this.options.opacity', this.options.opacity);
       this.node.style.opacity = `${this.options.opacity}`;
       this.node.style.position = 'fixed';
       this.node.style.left = '0';
